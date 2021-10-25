@@ -1,6 +1,6 @@
 from datetime import date
 import vk_api
-from Vkinder import config
+from Vkinder.application import config
 from sqlalchemy.orm import sessionmaker
 from Vkinder.application.create_bd import Pair, Bonds, engine
 

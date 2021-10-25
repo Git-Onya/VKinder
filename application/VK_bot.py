@@ -1,8 +1,7 @@
 from random import randrange
-from Vkinder.application import VKinder
+from Vkinder.application import VKinder, config
 from vk_api.longpoll import VkLongPoll, VkEventType
 import vk_api
-from Vkinder import config
 
 vk = vk_api.VkApi(token=config.GROUP_TOKEN)
 session = vk.get_api()
