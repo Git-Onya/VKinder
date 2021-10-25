@@ -1,4 +1,4 @@
-from Vkinder.application.VK_bot import VK_bot
+from Vkinder.application.VK_bot import vk_bot
 
 if __name__ == '__main__':
-    VK_bot()
+    vk_bot()
