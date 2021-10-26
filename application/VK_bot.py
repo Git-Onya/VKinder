@@ -1,5 +1,5 @@
 from random import randrange
-from Vkinder.application import VKinder, config
+import VKinder, config
 from vk_api.longpoll import VkLongPoll, VkEventType
 import vk_api
 

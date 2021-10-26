@@ -1,8 +1,8 @@
 from datetime import date
 import vk_api
-from Vkinder.application import config
+import config
 from sqlalchemy.orm import sessionmaker
-from Vkinder.application.create_bd import Pair, Bonds, engine
+from create_db import Pair, Bonds, engine
 
 vk = vk_api.VkApi(token=config.USER_TOKEN)
 Session = sessionmaker(bind=engine)
