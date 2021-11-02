@@ -1,8 +1,8 @@
 from datetime import date
 import vk_api
-import config
+from Vkinder.application import config
 from sqlalchemy.orm import sessionmaker
-from create_db import Pair, Bonds, engine
+from Vkinder.application.create_db import Pair, Bonds, engine
 
 vk = vk_api.VkApi(token=config.USER_TOKEN)
 Session = sessionmaker(bind=engine)
@@ -25,16 +25,17 @@ class VKinder:
         except KeyError:
             self.age = None
 
-    def set_city(self, value):
-        self.city = value
+    # def set_city(self, value):
+    #     self.city = value
 
     def search(self):
         sex = [1, 2]
         sex.remove(self.sex)
-        pairs = vk.method('users.search',
-                          {'count': 10, 'sex': sex, 'hometown': self.city, 'status': 6,
-                           'age_from': self.age - 2,
-                           'age_to': self.age + 2, 'has_photo': 1, 'v': '5.131'})['items']
+        params = {'count': 10, 'sex': sex, 'hometown': self.city, 'status': 6, 'has_photo': 1, 'v': '5.131'}
+        if self.age is not None:
+            params['age_from'] = self.age - 2
+            params['age_to'] = self.age + 2
+        pairs = vk.method('users.search', params)['items']
         # если аккаунт не закрыт для пользователя, в бд добавляются id, имя, ссылка и id фоток
         for pair in pairs:
             try:
