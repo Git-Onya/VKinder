@@ -1,8 +1,8 @@
 from datetime import date
 import vk_api
-from Vkinder.application import config
+from application import config
 from sqlalchemy.orm import sessionmaker
-from Vkinder.application.create_db import Pair, Bonds, engine
+from application.create_db import Pair, Bonds, engine
 
 vk = vk_api.VkApi(token=config.USER_TOKEN)
 Session = sessionmaker(bind=engine)
@@ -25,8 +25,8 @@ class VKinder:
         except KeyError:
             self.age = None
 
-    # def set_city(self, value):
-    #     self.city = value
+    def set_city(self, value):
+        self.city = value
 
     def search(self):
         sex = [1, 2]

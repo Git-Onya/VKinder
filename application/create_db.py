@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine, PrimaryKeyConstraint
-from Vkinder.application.config import DSN
+from application.config import DSN
 
 engine = create_engine(DSN, echo=True)
 Base = declarative_base()
